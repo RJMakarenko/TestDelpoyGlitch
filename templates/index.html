@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2 align="center">Журнал работ</h2>
+{% for job in jobs['jobs'] %}
+<div align="center">
+    <h3>Работа № {{ job['id'] }}</h3>
+    <div class="table_container">
+        <table>
+            <tr>
+                <td class="title" width="400px" align="center">Наименование работы</td>
+                <td class="title" width="150px" align="center">Руководитель</td>
+                <td class="title" width="100px" align="center">Длительность</td>
+                <td class="title" width="200px" align="center">Список участников</td>
+                <td class="title" width="100px" align="center">Признак завершения</td>
+            </tr>
+            <tr>
+                <td align="center" bgcolor="#eeeeff" class="description">{{ job['job'].capitalize() }}</td>
+                <td align="center" class="description">{{ names['users'][job['team_leader']]['name'] }} {{ names['users'][job['team_leader']]['surname'] }}
+                </td>
+                <td align="center">{{ job['work_size'] }} hours</td>
+                <td align="center">{{ job['collaborators'] }}</td>
+                {% if job['is_finished'] %}
+                <td align="center" bgcolor="#eeffee">Finished</td>
+                {% else %}
+                <td align="center" bgcolor="#ffeeff">Is not finished</td>
+                {% endif %}
+            </tr>
+
+        </table>
+    </div>
+    <br>
+</div>
+{% endfor %}
+
+{% endblock %}
