@@ -193,6 +193,7 @@ def handle_generic_exception(error):
 
 def main():
     db_session.global_init('db/mars.db')
+
     app.run(host='0.0.0.0')
 
 
